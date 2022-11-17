@@ -25,3 +25,109 @@ console.log(typeof texto)
 console.log(typeof boolean)
 console.log(typeof hijos)
 console.log(typeof zapatos)
+
+
+//Truty Falsy
+//Strings
+if(""){
+    console.log("String vacio Es verdadero")
+}else{
+    console.log("String vacio Es Falsy")
+}
+if("Kevin"){
+    console.log("String con datos es truty")
+}else{
+    console.log("String vacio con datos Falso")
+}
+
+//Numeros
+if(-1){
+    console.log("Negativos es truty")
+}else{
+    console.log("Negativos es falso")
+}
+if(0){
+    console.log("Cero es truty")
+}else{
+    console.log("Cero es falsy")
+}
+if(1){
+    console.log("Positivos es truty")
+}else{
+    console.log("Positivos es falsy")
+}
+
+if(null){
+    console.log("Null es truty")
+}else{
+    console.log("Null es falsy")
+}
+if(undefined){
+    console.log("undefined es truty")
+}else{
+    console.log("undefined es falsy")
+}
+
+const kevin = {
+    "nombre" : "Kevin", //llave : valor,
+    "apellido" : "Ramos",
+    edad: 22,
+    hijos: null,
+    zapatos : undefined,
+    casado: false,
+    ropa : {
+        color : "azul",
+        talla : "38"
+    },
+    mascotas : ['Teo','Mota'],
+};
+console.log(kevin)
+
+//cambiar valores
+kevin.edad = 23
+// crear nuevo atributo
+kevin.sueldo; //undefined
+kevin.sueldo = 1000.2;
+console.log(kevin.sueldo);
+kevin["gastos"] = 0.0;
+console.log(kevin.gastos);
+console.log(kevin);
+
+// borrar el valor de una propiedad
+kevin.nombre = undefined;
+console.log(kevin.nombre);
+console.log(Object.keys(kevin));
+console.log(Object.values(kevin));
+//DELETE la llave y el valor
+delete kevin.nombre;
+console.log(Object.keys(kevin))
+console.log(kevin)
+
+//variables por valor o referencia?
+//variables por valors en JS son las primitivas: number, string, boolean
+let edadKevin = 23;
+let edadDavid = edadKevin; // Guardamos una primitiva en otra variable
+                            // variables por valor
+console.log(edadKevin); //23
+console.log(edadDavid); //23
+
+edadKevin = edadKevin + 1; //
+console.log(edadKevin) //24
+console.log(edadDavid) //23
+
+//Variables por referencia
+
+let notas = {
+    total : 10
+};
+let notasSegundoBimestre = notas;
+notasSegundoBimestre.total = notasSegundoBimestre.total + 1;
+console.log(notas);
+console.log(notasSegundoBimestre);
+
+//como clonar objetos
+let notasTercerBimestre = Object.assign({},notas);
+notasTercerBimestre = notasTercerBimestre.total + 1;
+console.log("notas", notas);
+console.log("notasSegundoBimestre", notasSegundoBimestre);
+console.log("notasTercerBimestre", notasTercerBimestre);
