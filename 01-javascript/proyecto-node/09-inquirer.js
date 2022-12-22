@@ -21,7 +21,7 @@ async function main(){
                 {
                     type: "input",
                     name: "telefono",
-                    message: "Ingresa tu edad"
+                    message: "Ingresa tu telefono"
                 }
 
             ]);
@@ -31,3 +31,4 @@ async function main(){
     }
 }
 main();
+
