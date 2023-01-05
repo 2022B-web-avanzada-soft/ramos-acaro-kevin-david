@@ -15,6 +15,12 @@ export default  function (props: PropiedadesComponente){
     // const iteraciones = props.iteraciones;
 
     return (
-        <></>
+        <>
+            <a href={url}>Ir a google</a>
+            {mostrar ? <p>Hello</p> : <></>}
+            <div>
+                {iteraciones}
+            </div>
+        </>
     )
 }
