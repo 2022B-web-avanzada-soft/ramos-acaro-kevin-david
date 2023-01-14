@@ -1,0 +1,5 @@
+[{"nombre":"AudifonosUltimate","marca":"acer","serial":"12345","precio":"50,50","disponibilidad":"true"},
+ {"nombre":"Mouse","marca":"acer","serial":"12345","precio":"50,50","disponibilidad":"true"},
+ {"nombre":"Teclado","marca":"acer","serial":"12345","precio":"50,50","disponibilidad":"true"},
+ {"nombre":"Camara","marca":"acer","serial":"12345","precio":"50,50","disponibilidad":"true"}
+]
