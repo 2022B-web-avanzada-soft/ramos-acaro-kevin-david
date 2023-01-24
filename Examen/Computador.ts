@@ -30,7 +30,7 @@ export class Computador{
     static async registrarComputador(computador: Computador){
 
         try{
-            let arregloComputadores =  JSON.parse(<string>await this.obtenerComputadores());
+            let arregloComputadores =  await this.obtenerComputadores();
             arregloComputadores.push(computador);
             await escribirArchivo("ListaDeComputadores.txt", JSON.stringify(arregloComputadores) );
         }catch (e){
@@ -38,6 +38,36 @@ export class Computador{
         }
 
     }
+    static async actualizarComputador(computadorDesactualizado: string, computadorActualizado: Computador){
+
+        try{
+            const arregloComputadores =  await this.obtenerComputadores();
+            const arregloActualizado = arregloComputadores.map((computador)=>{
+               if(computador.nombre===computadorDesactualizado){
+                   computador = computadorActualizado;
+               }
+               return computador
+            })
+            await escribirArchivo("ListaDeComputadores.txt", JSON.stringify(arregloActualizado) );
+        }catch (e){
+            console.log(e)
+        }
+
+    }
+    static async eliminarComputador(computadorPorEliminar: string){
+
+        try{
+            const arregloComputadores =  await this.obtenerComputadores();
+            const arregloActualizado = arregloComputadores.filter((computador)=>{
+                return computador.nombre !== computadorPorEliminar
+            })
+            await escribirArchivo("ListaDeComputadores.txt", JSON.stringify(arregloActualizado) );
+        }catch (e){
+            console.log(e)
+        }
+
+    }
+
     public agregarComponente(componente:Componente){
         this.componentes.push(componente);
     }

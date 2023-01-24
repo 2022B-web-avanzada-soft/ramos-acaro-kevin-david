@@ -71,23 +71,77 @@ var Computador = /** @class */ (function () {
     };
     Computador.registrarComputador = function (computador) {
         return __awaiter(this, void 0, void 0, function () {
-            var arregloComputadores, _a, _b, e_2;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            var arregloComputadores, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        _c.trys.push([0, 3, , 4]);
-                        _b = (_a = JSON).parse;
+                        _a.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, this.obtenerComputadores()];
                     case 1:
-                        arregloComputadores = _b.apply(_a, [_c.sent()]);
+                        arregloComputadores = _a.sent();
                         arregloComputadores.push(computador);
                         return [4 /*yield*/, (0, archivos_1.escribirArchivo)("ListaDeComputadores.txt", JSON.stringify(arregloComputadores))];
                     case 2:
-                        _c.sent();
+                        _a.sent();
                         return [3 /*break*/, 4];
                     case 3:
-                        e_2 = _c.sent();
+                        e_2 = _a.sent();
                         console.log(e_2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Computador.actualizarComputador = function (computadorDesactualizado, computadorActualizado) {
+        return __awaiter(this, void 0, void 0, function () {
+            var arregloComputadores, arregloActualizado, e_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.obtenerComputadores()];
+                    case 1:
+                        arregloComputadores = _a.sent();
+                        arregloActualizado = arregloComputadores.map(function (computador) {
+                            if (computador.nombre === computadorDesactualizado) {
+                                computador = computadorActualizado;
+                            }
+                            return computador;
+                        });
+                        return [4 /*yield*/, (0, archivos_1.escribirArchivo)("ListaDeComputadores.txt", JSON.stringify(arregloActualizado))];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_3 = _a.sent();
+                        console.log(e_3);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Computador.eliminarComputador = function (computadorPorEliminar) {
+        return __awaiter(this, void 0, void 0, function () {
+            var arregloComputadores, arregloActualizado, e_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.obtenerComputadores()];
+                    case 1:
+                        arregloComputadores = _a.sent();
+                        arregloActualizado = arregloComputadores.filter(function (computador) {
+                            return computador.nombre !== computadorPorEliminar;
+                        });
+                        return [4 /*yield*/, (0, archivos_1.escribirArchivo)("ListaDeComputadores.txt", JSON.stringify(arregloActualizado))];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_4 = _a.sent();
+                        console.log(e_4);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
                 }

@@ -1,5 +1,4 @@
-import {B} from "../02-typescript/02-interfaces";
-import {leerArchivo} from "./archivos";
+import {escribirArchivo, leerArchivo} from "./archivos";
 
 export  class Componente{
 
@@ -29,13 +28,54 @@ export  class Componente{
     }
 
     static async obtenerComponente(nombre:String){
-        let componente = JSON.parse(<string>await this.obtenerComponentes()).filter(
-            (valorActual,indiceActual,arregloCompleto) => {
-                return valorActual.nombre == nombre;
+        return (await this.obtenerComponentes()).find(
+            (valorActual, indiceActual, arregloCompleto) => {
+                return valorActual.nombre === nombre;
             }
         );
-        return componente[0]
     }
 
+    static async registrarComponente(componente: Componente){
+
+        try{
+            let arregloComponentes =  await this.obtenerComponentes();
+            arregloComponentes.push(componente);
+            await escribirArchivo("ListaDeComponentes.txt", JSON.stringify(arregloComponentes) );
+        }catch (e){
+            console.log(e)
+        }
+
+    }
+
+    static async actualizarComponente(componenteDesactualizado: string, componenteActualizado: Componente){
+
+        try{
+            const arregloComponentes =  await this.obtenerComponentes();
+            const arregloActualizado = arregloComponentes.map((componentes)=>{
+                if(componentes.nombre===componenteDesactualizado){
+                    componentes = componenteActualizado;
+                }
+                return componentes
+            })
+            await escribirArchivo("ListaDeComponentes.txt", JSON.stringify(arregloActualizado) );
+        }catch (e){
+            console.log(e)
+        }
+
+    }
+
+    static async eliminarComponente(componentePorEliminar: string){
+
+        try{
+            const arregloComponentes =  await this.obtenerComponentes();
+            const arregloActualizado = arregloComponentes.filter((componente)=>{
+                return componente.nombre !== componentePorEliminar
+            })
+            await escribirArchivo("ListaDeComponentes.txt", JSON.stringify(arregloActualizado) );
+        }catch (e){
+            console.log(e)
+        }
+
+    }
 
 }

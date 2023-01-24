@@ -2,6 +2,7 @@
 
 import {MonedasInterface} from "../../interfaces/monedas";
 import {useState} from "react";
+import {JSXElement} from "@babel/types";
 
 export default function (label: string, opciones: MonedasInterface[]){
     //select del arreglo de monedas (html - jsx element)
@@ -11,7 +12,7 @@ export default function (label: string, opciones: MonedasInterface[]){
         return opciones.map(
             (moneda:MonedasInterface)=>
                 (// Iteracion (KEY ES REQUERIDO)
-                    <option key={moneda.id} id={moneda.id} value={moneda.nombre}>
+                    <option key={moneda.id} id={moneda.id} value={moneda.id}>
                     {moneda.nombre}
                     </option>
                 )

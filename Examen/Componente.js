@@ -48,18 +48,19 @@ var Componente = /** @class */ (function () {
     }
     Componente.obtenerComponentes = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var contenidoArchivo, e_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
+            var contenidoArchivo, _a, _b, e_1;
+            return __generator(this, function (_c) {
+                switch (_c.label) {
                     case 0:
-                        _a.trys.push([0, 3, , 4]);
+                        _c.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, (0, archivos_1.leerArchivo)("./ListaDeComponentes.txt")];
                     case 1:
-                        contenidoArchivo = _a.sent();
+                        contenidoArchivo = _c.sent();
+                        _b = (_a = JSON).parse;
                         return [4 /*yield*/, contenidoArchivo];
-                    case 2: return [2 /*return*/, _a.sent()];
+                    case 2: return [2 /*return*/, _b.apply(_a, [_c.sent()])];
                     case 3:
-                        e_1 = _a.sent();
+                        e_1 = _c.sent();
                         console.log(e_1);
                         return [3 /*break*/, 4];
                     case 4: return [2 /*return*/];
@@ -69,17 +70,91 @@ var Componente = /** @class */ (function () {
     };
     Componente.obtenerComponente = function (nombre) {
         return __awaiter(this, void 0, void 0, function () {
-            var componente, _a, _b;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.obtenerComponentes()];
+                    case 1: return [2 /*return*/, (_a.sent()).find(function (valorActual, indiceActual, arregloCompleto) {
+                            return valorActual.nombre === nombre;
+                        })];
+                }
+            });
+        });
+    };
+    Componente.registrarComponente = function (componente) {
+        return __awaiter(this, void 0, void 0, function () {
+            var arregloComponentes, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
                     case 0:
-                        _b = (_a = JSON).parse;
+                        _a.trys.push([0, 3, , 4]);
                         return [4 /*yield*/, this.obtenerComponentes()];
                     case 1:
-                        componente = _b.apply(_a, [_c.sent()]).filter(function (valorActual, indiceActual, arregloCompleto) {
-                            return valorActual.nombre == nombre;
+                        arregloComponentes = _a.sent();
+                        arregloComponentes.push(componente);
+                        return [4 /*yield*/, (0, archivos_1.escribirArchivo)("ListaDeComponentes.txt", JSON.stringify(arregloComponentes))];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_2 = _a.sent();
+                        console.log(e_2);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Componente.actualizarComponente = function (componenteDesactualizado, componenteActualizado) {
+        return __awaiter(this, void 0, void 0, function () {
+            var arregloComponentes, arregloActualizado, e_3;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.obtenerComponentes()];
+                    case 1:
+                        arregloComponentes = _a.sent();
+                        arregloActualizado = arregloComponentes.map(function (componentes) {
+                            if (componentes.nombre === componenteDesactualizado) {
+                                componentes = componenteActualizado;
+                            }
+                            return componentes;
                         });
-                        return [2 /*return*/, componente[0]];
+                        return [4 /*yield*/, (0, archivos_1.escribirArchivo)("ListaDeComponentes.txt", JSON.stringify(arregloActualizado))];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_3 = _a.sent();
+                        console.log(e_3);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    Componente.eliminarComponente = function (componentePorEliminar) {
+        return __awaiter(this, void 0, void 0, function () {
+            var arregloComponentes, arregloActualizado, e_4;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 3, , 4]);
+                        return [4 /*yield*/, this.obtenerComponentes()];
+                    case 1:
+                        arregloComponentes = _a.sent();
+                        arregloActualizado = arregloComponentes.filter(function (componente) {
+                            return componente.nombre !== componentePorEliminar;
+                        });
+                        return [4 /*yield*/, (0, archivos_1.escribirArchivo)("ListaDeComponentes.txt", JSON.stringify(arregloActualizado))];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        e_4 = _a.sent();
+                        console.log(e_4);
+                        return [3 /*break*/, 4];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
