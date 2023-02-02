@@ -16,7 +16,7 @@ import Layout from "../components/Layout";
 export default function a_hola_mundo(){
     return (
         <>
-            <Layout title={"Hola Mundo"}>
+            <Layout title={'Hola Mundo'}>
                 <h1>Hola Mundo </h1>
                 <EstilosEjemplo></EstilosEjemplo>
                 <h1>Hola Mundo</h1>
@@ -25,6 +25,7 @@ export default function a_hola_mundo(){
                             url={'http://google.com'}
                 ></Componente>
             </Layout>
+
         </>
     )
 }

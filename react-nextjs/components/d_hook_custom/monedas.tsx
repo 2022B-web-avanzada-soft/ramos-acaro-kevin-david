@@ -13,5 +13,4 @@ export const MONEDAS: MonedasInterface[] = [
     {
         id:'GBP', nombre: 'Libra esterlina'
     }
-
 ]

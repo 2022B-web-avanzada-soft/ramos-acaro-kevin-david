@@ -6,7 +6,8 @@ import {MONEDAS} from "./monedas";
 export default function (){
     const [moneda, UseSelectMonedas] = useSelectMoneda(
         'Moneda',
-        MONEDAS
+            MONEDAS
+
     )
     useEffect(
         ()=>{

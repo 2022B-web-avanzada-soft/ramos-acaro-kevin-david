@@ -1,7 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-/* tailwind.config.js*/
-const konstaConfig = require("konsta/config");
-
+const konstaConfig = require('konsta/config');
 module.exports = konstaConfig({
         content: [
             "./pages/**/*.{js,ts,jsx,tsx}",
