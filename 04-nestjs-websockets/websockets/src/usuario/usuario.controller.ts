@@ -15,7 +15,8 @@ import {validate} from "class-validator";
 
 import {MongoFindManyOptions} from "typeorm/find-options/mongodb/MongoFindManyOptions";
 import {UsuarioEntity} from "./usuario.entity";
-import {FindOptionsWhere, Like} from "typeorm";
+import {FindOneOptions, FindOptionsWhere, Like} from "typeorm";
+
 
 @Controller('usuario')
 // http://localhost:3000/usuario/
@@ -127,12 +128,9 @@ export class UsuarioController{
         return  this.usuarioService.find(consulta);
     }
 
-
-
-
-
-
-
+    const consulta: FindOneOptions<UsuarioEntity> = {
+        relations: ["notas"],
+    }
 
 
     // 1 Informativo
