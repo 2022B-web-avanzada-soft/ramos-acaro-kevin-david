@@ -1,4 +1,5 @@
-import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {NotaEntity} from "../nota/nota.entity";
 
 @Entity("epn_usuario")
 
@@ -37,4 +38,8 @@ export class UsuarioEntity{
     })
     rol: string;
 
+    @OneToMany(
+        ()=> NotaEntity, //Entidad hija
+        (instanciaNotaEntity) => instanciaNotaEntity.usuario)
+        notas: NotaEntity[]
 }
