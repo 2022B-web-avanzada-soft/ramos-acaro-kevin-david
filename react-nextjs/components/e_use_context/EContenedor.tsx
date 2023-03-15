@@ -1,7 +1,8 @@
 import {ContenedorContext, ContenedorContextObject} from "./ContenedorContext";
-import {useEffect, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 import EComponenteA from "./EComponenteA";
 
+export const ContenedorContexts= createContext({} as any);
 export default function (){
     const [nombreUsuario, setNombreUsuario] = useState("Marco")
     const objetoContenedorContext:ContenedorContextObject = {nombreUsuario, setNombreUsuario};
@@ -13,9 +14,9 @@ export default function (){
     )
     return (
         <>
-            <ContenedorContext.Provider value={objetoContenedorContext}>
+            <ContenedorContexts.Provider value={objetoContenedorContext}>
                 <EComponenteA></EComponenteA>
-            </ContenedorContext.Provider>
+            </ContenedorContexts.Provider>
         </>
     )
 }

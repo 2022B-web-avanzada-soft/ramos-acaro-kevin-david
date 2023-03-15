@@ -1,12 +1,10 @@
 import { GetStaticProps, GetStaticPaths } from 'next'
-
-import { User } from '../../interfaces'
-import { sampleUserData } from '../../utils/sample-data'
 import Layout from '../../components/Layout'
 import ListDetail from '../../components/ListDetail'
+import {Computadora, ComputerService} from "../../computadora/computadora.service";
 
 type Props = {
-  item?: User
+  item?: Computadora
   errors?: string
 }
 
@@ -24,7 +22,7 @@ const StaticPropsDetail = ({ item, errors }: Props) => {
   return (
     <Layout
       title={`${
-        item ? item.name : 'User Detail'
+        item ? item.nombre : 'User Detail'
       } | Next.js + TypeScript Example`}
     >
       {item && <ListDetail item={item} />}
@@ -36,8 +34,12 @@ export default StaticPropsDetail
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Get the paths we want to pre-render based on computadoras
-  const paths = sampleUserData.map((user) => ({
-    params: { id: user.id.toString() },
+  const computadoras = new ComputerService();
+  const listaComputadoras = await computadoras.getComputadoras();
+
+  const paths =  listaComputadoras.map((computadora) => ({
+    params: { id: computadora.id.toString() },
+
   }))
 
   // We'll pre-render only these paths at build time.
@@ -51,7 +53,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   try {
     const id = params?.id
-    const item = sampleUserData.find((data) => data.id === Number(id))
+    const computadoras = new ComputerService();
+    const listaComputadoras = await computadoras.getComputadoras();
+    const item = listaComputadoras.find((computadora) => computadora.id === Number(id))
     // By returning { props: item }, the StaticPropsDetail component
     // will receive `item` as a prop at build time
     return { props: { item } }

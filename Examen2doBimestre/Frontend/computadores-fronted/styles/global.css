@@ -1,0 +1,30 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+html, body {
+    height: 100%;
+}
+
+
+#__next {
+    margin-top: 50px; /* Altura total de la pantalla menos la altura del footer */
+    padding-bottom: 50px; /* Altura del footer */
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    height: 50px; /* Altura del footer */
+    margin: 0;
+    padding: 0;
+    background-color: #212529;
+    color: whitesmoke;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+
+}
+
+

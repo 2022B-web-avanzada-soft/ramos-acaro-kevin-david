@@ -32,7 +32,7 @@ export default function (){
             mensaje: '',
         },
         mode: 'all'
-    })
+    });
 
     useEffect(
         ()=>{
